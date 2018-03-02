@@ -1,0 +1,31 @@
+{
+    "name": "restaurants-backend",
+    "version": "0.0.2",
+    "description": "",
+    "main": "dist",
+    "scripts": {
+        "dev": "nodemon ./bin/www",
+        "start": "node ./bin/www",
+        "test": "eslint src",
+        "deploy": "git push origin master"
+    },
+    "dependencies": {
+        "@google/maps": "^0.4.5",
+        "body-parser": "^1.18.2",
+        "cheerio": "latest",
+        "compression": "^1.5.2",
+        "cors": "^2.7.1",
+        "dotenv": "^5.0.1",
+        "express": "^4.15.5",
+        "firebase-admin": "^5.9.1",
+        "morgan": "^1.8.0",
+        "node-schedule": "^1.3.0",
+        "promise": "^8.0.1",
+        "request": "latest",
+        "resource-router-middleware": "^0.6.0"
+    },
+    "devDependencies": {
+        "eslint": "^3.1.1",
+        "nodemon": "^1.9.2"
+    }
+}
