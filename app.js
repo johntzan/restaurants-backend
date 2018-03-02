@@ -19,8 +19,8 @@ app.use(express.static(path.join(__dirname, "views")));
 app.use("/", index);
 
 var rule = new scheduler.RecurrenceRule();
-rule.hour = 17;
-rule.minute = 0;
+rule.hour = 18;
+rule.minute = 5;
 rule.dayOfWeek = new scheduler.Range(1, 5);
 scheduler.scheduleJob(rule, function() {
   console.log("Running on schedule");
