@@ -71,7 +71,7 @@ function callback(error, response, body) {
 function getRestaurants(body) {
   let restaurantArray = [];
   let threeDaysAgo = new Date().getTime();
-  threeDaysAgo -= 86400000 * 4;
+  threeDaysAgo -= 86400000 * 3;
 
   for (let index = 0; index < 99; index++) {
     let lastInspected = body.find(a =>
