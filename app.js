@@ -8,6 +8,9 @@ require("dotenv").config();
 var scheduler = require("node-schedule");
 
 var index = require("./routes/index");
+var terms = require("./routes/terms");
+var privacy_policy = require("./routes/privacy-policy");
+
 var scraper = require("./routes/scraper");
 
 var app = express();
@@ -18,6 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "views")));
 
 app.use("/", index);
+app.use("/app/privacy-policy", privacy_policy);
+app.use("/app/terms", terms);
 
 var rule = new scheduler.RecurrenceRule();
 rule.hour = 18;
@@ -38,6 +43,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  console.log(err.message);
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
