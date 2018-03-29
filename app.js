@@ -12,6 +12,7 @@ var terms = require("./routes/terms");
 var privacy_policy = require("./routes/privacy-policy");
 
 var scraper = require("./routes/scraper");
+var removeOld = require("./routes/remove-old");
 
 var app = express();
 
@@ -24,11 +25,19 @@ app.use("/", index);
 app.use("/app/privacy-policy", privacy_policy);
 app.use("/app/terms", terms);
 
-var rule = new scheduler.RecurrenceRule();
-rule.hour = 18;
-rule.minute = 5;
-scheduler.scheduleJob(rule, function() {
-  console.log("Running on schedule");
+var removeRule = new scheduler.RecurrenceRule();
+removeRule.hour = 3;
+removeRule.minute = 5;
+scheduler.scheduleJob(removeRule, function() {
+  console.log("Running remove-old on schedule");
+  removeOld.remove();
+});
+
+var scraperRule = new scheduler.RecurrenceRule();
+scraperRule.hour = 18;
+scraperRule.minute = 5;
+scheduler.scheduleJob(scraperRule, function() {
+  console.log("Running scraper on schedule");
   scraper.request();
 });
 
