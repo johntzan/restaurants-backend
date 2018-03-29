@@ -1,5 +1,8 @@
 # The Restaurant Community App Backend
+@ https://therestaurantcommunity.herokuapp.com/
 
-* web scraper/place finder with nodejs / google places / cheerio
+![Alt text](https://github.com/johntzan/the-restaurant-community-backend/blob/master/views/assets/logo.png)
 
-@https://therestaurantcommunity.herokuapp.com/
+*  NodeJS / Web Scraper / Google Places Finder / Scheduler / Cheerio / Firebase(Firestore)
+
+
