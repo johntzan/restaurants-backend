@@ -139,6 +139,7 @@ function getReports(restaurantArray) {
           let report = {
             timeOfReport: restaurant.timeOfReport,
             place_id: result[0].place_id,
+            placeName: restaurant.restName,
             type: "hd",
             location: {
               latitude: result[0].geometry.location.lat,
