@@ -10,21 +10,13 @@ let reportsHistoryDoc = db.collection("reports_history");
 const today = new Date();
 const thirtyDaysAgoDate = new Date().setDate(today.getDate() - 30);
 
-function removeOld() {
+async function removeOld() {
   reportsDoc
     .where("timeOfReport", "<=", thirtyDaysAgoDate)
     .get()
     .then(querySnapshot => {
       querySnapshot.forEach(doc => {
-        reportsHistoryDoc
-          .add(doc)
-          .then(success => {
-            console.log("Added to History");
-          })
-          .catch(error => {
-            console.log("ERROR: ", error);
-          });
-
+        await moveDoc(doc.data());
         console.log("Deleting: ", doc.id);
         reportsDoc.doc(doc.id).delete();
       });
@@ -37,6 +29,17 @@ function removeOld() {
     });
 
   console.log("FINISHED REMOVING OLD");
+}
+
+function moveDoc(doc){
+        reportsHistoryDoc
+          .add(doc)
+          .then(success => {
+            console.log("Added to History");
+          })
+          .catch(error => {
+            console.log("ERROR: ", error);
+          });
 }
 
 module.exports.remove = removeOld;
